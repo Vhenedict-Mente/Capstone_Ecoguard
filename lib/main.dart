@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:ecoguard/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecoguard/pages/login.dart';
 import 'package:ecoguard/pages/home.dart';
 import 'package:ecoguard/pages/profile.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/home',
+      initialRoute: '/splashscreen',
       routes: {
+        '/splashscreen': (context) => SplashScreen(),
         '/home': (context) => LoginPage(),
         '/landingpage': (context) => HomePage(),
         '/profile': (context) => ProfilePage(),

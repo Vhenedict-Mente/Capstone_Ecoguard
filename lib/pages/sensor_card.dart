@@ -9,7 +9,8 @@ class SensorCard extends StatelessWidget {
   final double co2;
   final double ammonia;
 
-  SensorCard({super.key, 
+  SensorCard({
+    super.key,
     required this.environment,
     required this.temperature,
     required this.humidity,
@@ -21,7 +22,7 @@ class SensorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(10),
-      color: Color.fromARGB(248, 252, 249, 111), // Use the appropriate color
+      color: Color.fromARGB(248, 252, 249, 111),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,25 +39,33 @@ class SensorCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SensorDataColumn(
+                SensorDataGauge(
                   icon: Icons.thermostat,
                   value: temperature,
                   unit: '°C',
+                  minValue: -20,
+                  maxValue: 50,
                 ),
-                SensorDataColumn(
+                SensorDataGauge(
                   icon: Icons.water_drop,
                   value: humidity,
                   unit: '%',
+                  minValue: 0,
+                  maxValue: 100,
                 ),
-                SensorDataColumn(
+                SensorDataGauge(
                   icon: Icons.science,
                   value: ammonia,
                   unit: 'ppm',
+                  minValue: 0,
+                  maxValue: 50,
                 ),
-                SensorDataColumn(
+                SensorDataGauge(
                   icon: Icons.co2,
                   value: co2,
                   unit: 'ppm',
+                  minValue: 0,
+                  maxValue: 2000,
                 ),
               ],
             ),
@@ -67,45 +76,54 @@ class SensorCard extends StatelessWidget {
   }
 }
 
-class SensorDataColumn extends StatelessWidget {
+class SensorDataGauge extends StatelessWidget {
   final IconData icon;
   final double value;
   final String unit;
+  final double minValue;
+  final double maxValue;
 
-  SensorDataColumn(
-      {super.key, required this.icon, required this.value, required this.unit});
+  SensorDataGauge({
+    super.key,
+    required this.icon,
+    required this.value,
+    required this.unit,
+    required this.minValue,
+    required this.maxValue,
+  });
 
   @override
   Widget build(BuildContext context) {
+    double progress = (value - minValue) / (maxValue - minValue); // Normalize the value to range 0-1
+
     return Column(
       children: [
-        Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-            border: Border.all(
-              color: Color.fromARGB(255, 79, 179, 54),
-              width: 3,
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              width: 60,
+              height: 60,
+              child: CircularProgressIndicator(
+                value: progress,
+                strokeWidth: 8,
+                backgroundColor: Colors.grey.shade300,
+                valueColor: AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 79, 179, 54)),
+              ),
             ),
-          ),
-          child: Center(
-            child: Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '$value',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  '${value.toStringAsFixed(1)}',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  unit,
-                  style: TextStyle(fontSize: 14),
-                ),
+                Text(unit, style: TextStyle(fontSize: 10)),
               ],
             ),
-          ),
+          ],
         ),
+        SizedBox(height: 5),
         Icon(icon, size: 30),
       ],
     );

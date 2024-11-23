@@ -56,3 +56,8 @@ android {
 flutter {
     source = "../.."
 }
+
+// dependencies {
+//     implementation 'org.videolan.android:libvlc-all:3.3.17' // Use the latest version available
+//     // other dependencies
+// }
