@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
     try {
       // Send a GET request to your backend API, passing location_id as a query parameter
       final response = await http.get(Uri.parse(
-          'http://192.168.100.146/localconnect/get_feed_level.php?location_id=$locationId'));
+          'https://ecoguard.cc.nf/localconnect/get_feed_level.php?location_id=$locationId'));
 
       if (response.statusCode == 200) {
         // Parse the response body if the request is successful
@@ -119,17 +119,17 @@ class _HomePageState extends State<HomePage> {
       }
     } catch (e) {
       print(
-          'Error fetching feed level for location $locationId: $e, uri=http://192.168.100.146/localconnect/get_feed_level.php?location_id=$locationId');
+          'Error fetching feed level for location $locationId: $e, uri=https://ecoguard.cc.nf/get_feed_level.php?location_id=$locationId');
     }
   }
 
   Future<void> fetchTemperatures() async {
     // Fetch temperature data for Growing House
     final responseGH = await http.get(Uri.parse(
-        'http://192.168.100.146/localconnect/fetch_sensor_data.php?location_ID=1'));
+        'https://ecoguard.cc.nf/localconnect/fetch_sensor_data.php?location_ID=1'));
     // Fetch temperature data for Chicken Pen
     final responseCP = await http.get(Uri.parse(
-        'http://192.168.100.146/localconnect/fetch_sensor_data.php?location_ID=2'));
+        'https://ecoguard.cc.nf/localconnect/fetch_sensor_data.php?location_ID=2'));
 
     if (responseGH.statusCode == 200 && responseCP.statusCode == 200) {
       final dataGH = json.decode(responseGH.body);
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> fetchProductionData() async {
     final response = await http.get(Uri.parse(
-        'http://192.168.100.146/localconnect/fetch_production_data.php'));
+        'https://ecoguard.cc.nf/localconnect/fetch_production_data.php'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchBuildingData() async {
     try {
       var response = await http.get(
-        Uri.parse('http://192.168.100.146/localconnect/fetch_buildings.php'),
+        Uri.parse('https://ecoguard.cc.nf/localconnect/fetch_buildings.php'),
       );
 
       if (response.statusCode == 200) {

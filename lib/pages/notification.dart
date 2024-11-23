@@ -23,7 +23,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Future<void> fetchNotifications() async {
     // Replace with your actual API URL
     final String apiUrl =
-        "http://192.168.100.146/localconnect/get_feed_level.php";
+        "https://ecoguard.cc.nf/localconnect/get_feed_level.php";
 
     try {
       // Fetch feed levels for both location_ids

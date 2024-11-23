@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     var url =
-        "http://192.168.17/localconnect/login.php"; // Adjust URL if necessary
+        "https://ecoguard.cc.nf/localconnect/login.php"; // Adjust URL if necessary
     var response = await http.post(
       Uri.parse(url),
       body: {
@@ -223,7 +223,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     // Send data to your PHP backend for registration
     var url =
-        "http://192.168.1.17/localconnect/signup.php"; // Replace with your local IP if needed
+        "https://ecoguard.cc.nf/localconnect/signup.php"; // Replace with your local IP if needed
     var response = await http.post(
       Uri.parse(url),
       body: {
@@ -392,7 +392,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     }
 
     var url =
-        "http://192.168.1.17/localconnect/reset_password.php"; // Adjust URL as needed
+        "https://ecoguard.cc.nf/localconnect/reset_password.php"; // Adjust URL as needed
     var response = await http.post(
       Uri.parse(url),
       body: {
@@ -534,7 +534,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
 
     // Define the API endpoint
     var url =
-        "http://192.168.1.17/localconnect/update_password.php"; // Update with the correct URL
+        "https://ecoguard.cc.nf/localconnect/update_password.php"; // Update with the correct URL
 
     // Send the POST request to the server
     var response = await http.post(

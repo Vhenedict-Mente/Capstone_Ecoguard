@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
   // Function to update profile information in the database
   Future<void> updateProfile() async {
     var url =
-        Uri.parse('http://192.168.1.17/localconnect/update_profile.php');
+        Uri.parse('https://ecoguard.cc.nf/localconnect/update_profile.php');
 
     setState(() {
       _isLoading = true;

@@ -198,7 +198,7 @@ class _TrackRecordPageState extends State<TrackRecordPage> {
       try {
         // Send POST request to PHP API
         var response = await http.post(
-          Uri.parse('http://192.168.1.17/localconnect/insert_building.php'),
+          Uri.parse('https://ecoguard.cc.nf/localconnect/insert_building.php'),
           body: data,
         );
 
@@ -239,7 +239,7 @@ class _TrackRecordPageState extends State<TrackRecordPage> {
   Future<void> _fetchBuildingData() async {
     try {
       var response = await http.get(
-        Uri.parse('http://192.168.1.17/localconnect/fetch_buildings.php'),
+        Uri.parse('https://ecoguard.cc.nf/localconnect/fetch_buildings.php'),
       );
 
       if (response.statusCode == 200) {

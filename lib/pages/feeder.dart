@@ -48,7 +48,7 @@ class _FeederPageState extends State<FeederPage> {
     try {
       // Send a GET request to your backend API, passing location_id as a query parameter
       final response = await http.get(Uri.parse(
-          'http://192.168.100.146/localconnect/get_feed_level.php?location_id=$locationId'));
+          'https://ecoguard.cc.nf/localconnect/get_feed_level.php?location_id=$locationId'));
 
       if (response.statusCode == 200) {
         // Parse the response body if the request is successful
@@ -71,7 +71,7 @@ class _FeederPageState extends State<FeederPage> {
       }
     } catch (e) {
       print(
-          'Error fetching feed level for location $locationId: $e, uri=http://192.168.100.146/localconnect/get_feed_level.php?location_id=$locationId');
+          'Error fetching feed level for location $locationId: $e, uri=https://ecoguard.cc.nf/localconnect/get_feed_level.php?location_id=$locationId');
     }
   }
 

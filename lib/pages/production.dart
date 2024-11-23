@@ -26,7 +26,7 @@ class _ProductionPageState extends State<ProductionPage> {
 
   // Replace with your actual server IP or domain
   final String apiUrl =
-      'http://192.168.100.146/localconnect/production.php'; // Use 10.0.2.2 for Android Emulator
+      'https://ecoguard.cc.nf/localconnect/production.php'; // Use 10.0.2.2 for Android Emulator
 
   @override
   void initState() {

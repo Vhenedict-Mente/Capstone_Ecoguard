@@ -53,7 +53,7 @@ class _SensorPageState extends State<SensorPage> {
 
   Future<void> fetchSensorData(int locationID) async {
     final response = await http.get(Uri.parse(
-        'http://192.168.100.146/localconnect/fetch_sensor_data.php?location_ID=$locationID'));
+        'https://ecoguard.cc.nf/localconnect/fetch_sensor_data.php?location_ID=$locationID'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -248,7 +248,7 @@ class _SensorHistoryGraphState extends State<SensorHistoryGraph> {
 
   Future<void> fetchSensorHistoryData() async {
     final response = await http.get(Uri.parse(
-        'http://192.168.100.146/localconnect/fetch_sensor_history.php'));
+        'https://ecoguard.cc.nf/localconnect/fetch_sensor_history.php'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body) as List;
